@@ -148,6 +148,7 @@
 
         <Button
             android:id="@+id/plusButton"
+            android:onClick="increaseQuantity"
             android:layout_toRightOf="@id/quantityTextView"
             android:layout_below="@id/quantityTitleTextView"
             android:text="+"
