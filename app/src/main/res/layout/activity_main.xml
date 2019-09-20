@@ -122,6 +122,7 @@
 
         <Button
             android:id="@+id/minusButton"
+            android:onClick="decreaseQuantity"
             android:layout_toRightOf="@id/currencyTextView"
             android:layout_below="@id/quantityTitleTextView"
             android:text="-"

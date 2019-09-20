@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    int quantity = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,7 +17,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increaseQuantity(View view) {
+        quantity = quantity + 1;
         TextView quantityTextView = findViewById(R.id.quantityTextView);
-        quantityTextView.setText("1");
+        quantityTextView.setText(" " + quantity);
+    }
+
+    public void decreaseQuantity(View view) {
+        quantity = quantity - 1;
+        if (quantity < 0){
+            quantity = 0;
+        }
+        TextView quantityTextView = findViewById(R.id.quantityTextView);
+        quantityTextView.setText(" " + quantity);
+
     }
 }
