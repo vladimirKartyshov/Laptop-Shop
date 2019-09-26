@@ -2,6 +2,7 @@ package com.example.laptop_shop;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -9,13 +10,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     int quantity = 0;
     Spinner spinner;
     ArrayList spinnerArrayList;
     ArrayAdapter spinnerAdapter;
+
+    HashMap goodsMap;
+    String goodsName;
+    double price;
 
 
     @Override
@@ -24,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spinner = findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(this);
         spinnerArrayList = new ArrayList();
+
 
         spinnerArrayList.add("LENOVO");
         spinnerArrayList.add("ASUS");
@@ -37,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         //устанавливаем в spiner spinerAdapter
         spinner.setAdapter(spinnerAdapter);
 
+        goodsMap = new HashMap();
+        goodsMap.put("LENOVO", 20000.0);
+        goodsMap.put("ASUS", 30000.0);
+        goodsMap.put("ASER", 25000.0);
     }
 
 
@@ -44,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         quantity = quantity + 1;
         TextView quantityTextView = findViewById(R.id.quantityTextView);
         quantityTextView.setText(" " + quantity);
+        TextView priceTextView = findViewById(R.id.priceTextView);
+        priceTextView.setText("" + quantity * price);
     }
 
     public void decreaseQuantity(View view) {
@@ -53,6 +67,21 @@ public class MainActivity extends AppCompatActivity {
         }
         TextView quantityTextView = findViewById(R.id.quantityTextView);
         quantityTextView.setText(" " + quantity);
+        TextView priceTextView = findViewById(R.id.priceTextView);
+        priceTextView.setText("" + quantity * price);
+
+    }
+
+    @Override// в этом методе пишем код, когда выбирается элемент
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        goodsName = spinner.getSelectedItem().toString();//присваиваем значения которые сейчас в spinner
+        price = (double)goodsMap.get(goodsName);//присваиваем цене значение товара по ключу
+        TextView priceTextView = findViewById(R.id.priceTextView);
+        priceTextView.setText("" + quantity * price);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
