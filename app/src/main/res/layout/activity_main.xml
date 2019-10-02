@@ -58,12 +58,13 @@
     </Spinner>
 
     <ImageView
+        android:id="@+id/goodsImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:src="@drawable/msi_iap"
         android:scaleType="centerCrop"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:src="@drawable/msi_iap" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -116,7 +117,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="Quantity"
-            android:layout_marginStart="280dp"
+            android:layout_marginStart="260dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp" />
@@ -124,15 +125,16 @@
         <Button
             android:id="@+id/minusButton"
             android:onClick="decreaseQuantity"
-            android:layout_toRightOf="@id/currencyTextView"
+            android:layout_alignParentStart="true"
             android:layout_below="@id/quantityTitleTextView"
             android:text="-"
             android:textColor="@android:color/white"
             android:background="@color/colorPrimaryDark"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="210dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="160dp" />
+            android:layout_marginLeft="160dp"
+            android:layout_alignParentLeft="true" />
 
         <TextView
             android:id="@+id/quantityTextView"
@@ -142,11 +144,11 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="0"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="45dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="10dp" />
 
         <Button
             android:id="@+id/plusButton"

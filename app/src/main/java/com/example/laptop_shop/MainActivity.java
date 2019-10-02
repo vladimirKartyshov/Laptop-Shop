@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -29,13 +30,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        createSpinner();
+
+        createMap();
+    }
+
+
+    void createSpinner(){
+
         spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         spinnerArrayList = new ArrayList();
 
 
         spinnerArrayList.add("DELL");
-        spinnerArrayList.add("ASUS");
+        spinnerArrayList.add("MSI");
         spinnerArrayList.add("HP");
 
         //связываем данные со spiner
@@ -45,9 +54,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         //устанавливаем в spiner spinerAdapter
         spinner.setAdapter(spinnerAdapter);
 
+    }
+
+    void createMap(){
+
         goodsMap = new HashMap();
         goodsMap.put("DELL", 90000.0);
-        goodsMap.put("ASUS", 95000.0);
+        goodsMap.put("MSI", 95000.0);
         goodsMap.put("HP", 85000.0);
     }
 
@@ -78,6 +91,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         price = (double)goodsMap.get(goodsName);//присваиваем цене значение товара по ключу
         TextView priceTextView = findViewById(R.id.priceTextView);
         priceTextView.setText("" + quantity * price);
+
+        ImageView goodsImageView = findViewById(R.id.goodsImageView);
+
+        switch (goodsName){
+            case "MSI":
+                goodsImageView.setImageResource(R.drawable.msi_iap);
+                break;
+            case "DELL":
+                goodsImageView.setImageResource(R.drawable.DELL);
+                break;
+            case "HP":
+                goodsImageView.setImageResource(R.drawable.OMEN);
+                break;
+            default:
+                goodsImageView.setImageResource(R.drawable.msi_iap);
+                break;
+        }
+
     }
 
     @Override
