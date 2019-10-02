@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerArrayList = new ArrayList();
 
 
-        spinnerArrayList.add("LENOVO");
+        spinnerArrayList.add("DELL");
         spinnerArrayList.add("ASUS");
-        spinnerArrayList.add("ASER");
+        spinnerArrayList.add("HP");
 
         //связываем данные со spiner
         spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerArrayList);
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(spinnerAdapter);
 
         goodsMap = new HashMap();
-        goodsMap.put("LENOVO", 20000.0);
-        goodsMap.put("ASUS", 30000.0);
-        goodsMap.put("ASER", 25000.0);
+        goodsMap.put("DELL", 90000.0);
+        goodsMap.put("ASUS", 95000.0);
+        goodsMap.put("HP", 85000.0);
     }
 
 
