@@ -1,5 +1,6 @@
 package com.example.laptop_shop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -137,5 +138,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("orderPrice", "" + order.orderPrice);
         // после проверки строки Log можно удалять
 
+        // запускаем вторую activity
+        Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
+        //передаем данные во втору activity
+        orderIntent.putExtra("userNameForIntent", order.userName);// ключ, значение
+        orderIntent.putExtra("goodsName", order.goodsName);
+        orderIntent.putExtra("quantity", order.quantity);
+        orderIntent.putExtra("orderPrice", order.orderPrice);
+
+        startActivity(orderIntent);
     }
+
 }
