@@ -1,9 +1,11 @@
 package com.example.laptop_shop;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,12 +25,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     HashMap goodsMap;
     String goodsName;
     double price;
+    EditText userNameEditText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userNameEditText = findViewById(R.id.nameEditText);
 
         createSpinner();
 
@@ -108,11 +113,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 goodsImageView.setImageResource(R.drawable.msi_iap);
                 break;
         }
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    public void addToCart(View view) {
+
+        Order order = new Order();
+
+        order.userName = userNameEditText.getText().toString();
+        Log.d("userName", order.userName);// выводим в Logcat
+
+        order.goodsName = goodsName;// присваиваем полю класса order значение одноименной перем MainActivity
+        Log.d("goodsName", order.goodsName);
+
+        order.quantity = quantity;
+        Log.d("quantity", "" + order.quantity);//конкетенация int в String, т к в Logcat только String
+
+        order.orderPrice = quantity * price;
+        Log.d("orderPrice", "" + order.orderPrice);
+        // после проверки строки Log можно удалять
 
     }
 }
