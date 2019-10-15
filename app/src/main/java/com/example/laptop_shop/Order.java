@@ -5,6 +5,7 @@ public class Order {
     String userName;
     String goodsName;
     int quantity;
-    double orderPrice;
+    double price;//цена за единицу товара
+    double orderPrice;//цена всего заказа
 
 }
