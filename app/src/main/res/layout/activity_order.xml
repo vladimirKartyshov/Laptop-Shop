@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="8dp"
     tools:context=".OrderActivity">
 
     <TextView
@@ -14,6 +15,9 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:text="SUBMIT ORDER"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimaryDark"
         android:layout_marginTop="25dp"
         android:onClick="submitOrder"
         android:layout_width="match_parent"
